@@ -92,6 +92,8 @@
           <label class="text" :for="trait.name"> {{ trait.name }}</label>
         </div>
         <div class="header"></div>
+        <p class="text" v-if="selectedTraits[0] != null"> {{ traitDescription(selectedTraits[0]) }}</p>
+        <p class="text" v-if="selectedTraits[1] != null"> {{ traitDescription(selectedTraits[1]) }}</p>
       </div>
     </div>
   </div>
@@ -113,13 +115,14 @@ export default {
         agility: 5,
         luck: 5,
         remainingPoints: 5,
+        selectedTraits: [],
+        selectedFaction: null,
         factions: [
           {name: "NCR", description: "The NCR emphasizes and strives to support a plethora of old world values, such as democracy, personal liberty, and the rule of law. It also aims to restore general order to the wasteland, the improvement and development of infrastructure and economic systems, and overarching peace between people. Similar to institutions of the old world it seeks to emulate, continued expansion has created challenges with territorial control, loyalty, and corruption that plague the Republic and serve to hinder its goals. The NCR is often criticized by residents of the Mojave wasteland as well as other factions for being hawkish, imperialistic, poorly managed and over-extended in the region, and trying to attempt to emulate old world values that led to nuclear holocaust in the first place."},
           {name: "The Legion", description:"Caesar's Legion is an imperialistic, ultra-reactionary totalitarian dictatorship based on large scale slavery. Founded in 2247 by Edward Sallow, who then renamed himself Caesar, and Joshua Graham (also known as the Malpais Legate). The Legion uses trappings of the ancient Roman Empire as part of a unifying identity imposed on its tribes but does not recreate any cultural, social, or political institutions of ancient Rome. The Legion itself is simply a slave army built on ruthlessly utilitarian principles, supported by several tributary populations."},
           {name: "Mr. House", description:"Robert Edwin House is the self-styled president, CEO, and sole proprietor of the New Vegas Strip in the Mojave Wasteland in the year 2281. Prior to the Great War, House was an ever-alluring, reclusive enigma to the world and a veritable celebrity with various tabloids and news articles covering his every move in business and private life. His founding of RobCo Industries propelled him to the top through business savvy using mathematical prediction algorithms; gaining the envy of other roboticists and corporations through sheer success. As such, RobCo technology became ubiquitous across the former United States both in the civilian and military sectors, and shaping the technological progression of it."},
           {name: "Yes Man", description:"Yes Man was originally a generic securitron robot programmed to work for Mr. House like all the other securitrons found on the Strip. He was recovered by Benny and several of the Chairmen after being damaged by a pulse grenade. Following this incident, Followers of the Apocalypse member Emily Ortal examined the securitron in order to learn Mr. House's secrets in exchange for reprogramming him for Benny's personal use. The reprogramming resulted in Yes Man doing exactly as he was told. Yes Man will help you take down House and rule New Vegas in your stead."}
         ],
-        selectedFaction: null,
         traits: [
           {name: "Built to Destroy", description: "+3% weapon critical hit chance; but weapon condition decays 15% faster."},
           {name: "Claustrophobia", description: "+1 to all SPECIAL attributes while outside; but -1 when indoors."},
@@ -138,7 +141,6 @@ export default {
           {name: "Trigger Discipline", description: "Guns and Energy Weapons you fire are 20% more accurate, but Guns and Energy weapons you fire are 20% slower and Action Points cost for your guns and energy weapons are 20% higher."},
           {name: "Wild Wasteland", description: "Adds additional 'wacky' content and modifies existing content and special encounters"}
         ],
-        selectedTraits: []
     }
   },
   methods:{
@@ -226,6 +228,13 @@ export default {
         this.remainingPoints++;
       }
     },
+    traitDescription: function(name) {
+      for (var i=0; i < this.traits.length; i++) {
+        if (this.traits[i].name === name) {
+            return this.traits[i].description;
+        }
+    }
+    }
   }
 }
 </script>
