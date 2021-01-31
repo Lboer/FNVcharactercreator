@@ -95,6 +95,86 @@
         <p class="text" v-if="selectedTraits[0] != null"> {{ traitDescription(selectedTraits[0]) }}</p>
         <p class="text" v-if="selectedTraits[1] != null"> {{ traitDescription(selectedTraits[1]) }}</p>
       </div>
+      <div class="special">
+        <div class="special-box">
+          <label class="text">
+            Barter
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="barter" readonly>
+        </div>
+        <div class="special-box">
+          <label class="text">
+            Energy Weapons
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="energy" readonly>
+        </div>
+        <div class="special-box">
+          <label class="text">
+            Explosives
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="explosives" readonly>
+        </div>
+        <div class="special-box">
+          <label class="text">
+            Guns
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="guns" readonly>
+        </div>
+        <div class="special-box">
+          <label class="text">
+            Lockpick
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="lockpick" readonly>
+        </div>
+        <div class="special-box">
+          <label class="text">
+            Medicine
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="medicine" readonly>
+        </div>
+        <div class="special-box">
+          <label class="text">
+            Melee Weapons
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="melee" readonly>
+        </div>
+        <div class="special-box">
+          <label class="text">
+            Repair
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="repair" readonly>
+        </div>
+        <div class="special-box">
+          <label class="text">
+            Science
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="science" readonly>
+        </div>
+        <div class="special-box">
+          <label class="text">
+            Sneak
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="sneak" readonly>
+        </div>
+        <div class="special-box">
+          <label class="text">
+            Speech
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="speech" readonly>
+        </div>
+        <div class="special-box">
+          <label class="text">
+            Survival
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="survival" readonly>
+        </div>
+        <div class="special-box">
+          <label class="text">
+            Unarmed
+          </label>
+          <input class="score" type="number" max="100" min="1" :value="unarmed" readonly>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -265,7 +345,7 @@ a {
   display: inline-block;
   padding: 5px;
   border: 1px solid #666666;
-  width: 33%;
+  width: 30%;
   margin-top: 10px;
 }
 .name{
