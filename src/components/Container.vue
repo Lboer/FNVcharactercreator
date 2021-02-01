@@ -95,6 +95,7 @@
         <p class="text" v-if="selectedTraits[0] != null"> {{ traitDescription(selectedTraits[0]) }}</p>
         <p class="text" v-if="selectedTraits[1] != null"> {{ traitDescription(selectedTraits[1]) }}</p>
       </div>
+      <!-- Block 3: Skills -->
       <div class="special">
         <div class="special-box">
           <label class="text">
@@ -195,6 +196,19 @@ export default {
         agility: 5,
         luck: 5,
         remainingPoints: 5,
+        barter: null,
+        energy: null,
+        explosives: null,
+        guns: null,
+        lockpick: null,
+        medicine: null,
+        melee: null,
+        repair: null,
+        science: null,
+        sneak: null,
+        speech: null,
+        survival: null,
+        unarmed: null,
         selectedTraits: [],
         selectedFaction: null,
         factions: [
@@ -229,84 +243,98 @@ export default {
         this.strength++;
         this.remainingPoints--;
       }
+      this.updateSkills()
     },
     downStrength: function() {
       if(this.strength > 1){
         this.strength--;
         this.remainingPoints++;
       }
+      this.updateSkills()
     },
     upPerception: function() {
       if(this.perception < 10 && this.remainingPoints > 0){
         this.perception++;
         this.remainingPoints--;
       }
+      this.updateSkills()
     },
     downPerception: function() {
       if(this.perception > 1){
         this.perception--;
         this.remainingPoints++;
       }
+      this.updateSkills()
     },
     upEndurance: function() {
       if(this.endurance < 10 && this.remainingPoints > 0){
         this.endurance++;
         this.remainingPoints--;
       }
+      this.updateSkills()
     },
     downEndurance: function() {
       if(this.endurance > 1){
         this.endurance--;
         this.remainingPoints++;
       }
+      this.updateSkills()
     },
     upCharisma: function() {
       if(this.charisma < 10 && this.remainingPoints > 0){
         this.charisma++;
         this.remainingPoints--;
       }
+      this.updateSkills()
     },
     downCharisma: function() {
       if(this.charisma > 1){
         this.charisma--;
         this.remainingPoints++;
       }
+      this.updateSkills()
     },
     upIntelligence: function() {
       if(this.intelligence < 10 && this.remainingPoints > 0){
         this.intelligence++;
         this.remainingPoints--;
       }
+      this.updateSkills()
     },
     downIntelligence: function() {
       if(this.intelligence > 1){
         this.intelligence--;
         this.remainingPoints++;
       }
+      this.updateSkills()
     },
     upAgility: function() {
       if(this.agility < 10 && this.remainingPoints > 0){
         this.agility++;
         this.remainingPoints--;
       }
+      this.updateSkills()
     },
     downAgility: function() {
       if(this.agility > 1){
         this.agility--;
         this.remainingPoints++;
       }
+      this.updateSkills()
     },
     upLuck: function() {
       if(this.luck < 10 && this.remainingPoints > 0){
         this.luck++;
         this.remainingPoints--;
       }
+      this.updateSkills()
     },
     downLuck: function() {
       if(this.luck > 1){
         this.luck--;
         this.remainingPoints++;
       }
+      this.updateSkills()
     },
     traitDescription: function(name) {
       for (var i=0; i < this.traits.length; i++) {
@@ -314,6 +342,21 @@ export default {
             return this.traits[i].description;
         }
     }
+    },
+    updateSkills(){
+      this.barter = Math.ceil(2 + (2 * this.charisma) + (this.luck / 2));
+      this.energy = Math.ceil(2 + (2 * this.perception) + (this.luck / 2));
+      this.explosives = Math.ceil(2 + (2 * this.perception) + (this.luck / 2));
+      this.guns = Math.ceil(2 + (2 * this.agility) + (this.luck / 2));
+      this.lockpick = Math.ceil(2 + (2 * this.perception) + (this.luck / 2));
+      this.medicine = Math.ceil(2 + (2 * this.intelligence) + (this.luck / 2));
+      this.melee = Math.ceil(2 + (2 * this.strength) + (this.luck / 2));
+      this.repair = Math.ceil(2 + (2 * this.intelligence) + (this.luck / 2));
+      this.science = Math.ceil(2 + (2 * this.intelligence) + (this.luck / 2));
+      this.sneak = Math.ceil(2 + (2 * this.agility) + (this.luck / 2));
+      this.speech = Math.ceil(2 + (2 * this.charisma) + (this.luck / 2));
+      this.survival = Math.ceil(2 + (2 * this.endurance) + (this.luck / 2));
+      this.unarmed = Math.ceil(2 + (2 * this.endurance) + (this.luck / 2));
     }
   }
 }
