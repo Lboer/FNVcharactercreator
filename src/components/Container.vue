@@ -98,79 +98,79 @@
       <!-- Block 3: Skills -->
       <div class="special">
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="barter">
             Barter
           </label>
           <input class="score" type="number" max="100" min="1" :value="barter" readonly>
         </div>
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="energy">
             Energy Weapons
           </label>
           <input class="score" type="number" max="100" min="1" :value="energy" readonly>
         </div>
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="explosives">
             Explosives
           </label>
           <input class="score" type="number" max="100" min="1" :value="explosives" readonly>
         </div>
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="guns">
             Guns
           </label>
           <input class="score" type="number" max="100" min="1" :value="guns" readonly>
         </div>
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="lockpick">
             Lockpick
           </label>
           <input class="score" type="number" max="100" min="1" :value="lockpick" readonly>
         </div>
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="medicine">
             Medicine
           </label>
           <input class="score" type="number" max="100" min="1" :value="medicine" readonly>
         </div>
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="melee">
             Melee Weapons
           </label>
           <input class="score" type="number" max="100" min="1" :value="melee" readonly>
         </div>
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="repair">
             Repair
           </label>
           <input class="score" type="number" max="100" min="1" :value="repair" readonly>
         </div>
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="science">
             Science
           </label>
           <input class="score" type="number" max="100" min="1" :value="science" readonly>
         </div>
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="sneak">
             Sneak
           </label>
           <input class="score" type="number" max="100" min="1" :value="sneak" readonly>
         </div>
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="speech">
             Speech
           </label>
           <input class="score" type="number" max="100" min="1" :value="speech" readonly>
         </div>
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="survival">
             Survival
           </label>
           <input class="score" type="number" max="100" min="1" :value="survival" readonly>
         </div>
         <div class="special-box">
-          <label class="text">
+          <label v-on:click="toggleSkill" class="text" id="unarmed">
             Unarmed
           </label>
           <input class="score" type="number" max="100" min="1" :value="unarmed" readonly>
@@ -235,6 +235,7 @@ export default {
           {name: "Trigger Discipline", description: "Guns and Energy Weapons you fire are 20% more accurate, but Guns and Energy weapons you fire are 20% slower and Action Points cost for your guns and energy weapons are 20% higher."},
           {name: "Wild Wasteland", description: "Adds additional 'wacky' content and modifies existing content and special encounters"}
         ],
+        selectedSkills: [],
     }
   },
   methods:{
@@ -343,7 +344,7 @@ export default {
         }
     }
     },
-    updateSkills(){
+    updateSkills: function(){
       this.barter = Math.ceil(2 + (2 * this.charisma) + (this.luck / 2));
       this.energy = Math.ceil(2 + (2 * this.perception) + (this.luck / 2));
       this.explosives = Math.ceil(2 + (2 * this.perception) + (this.luck / 2));
@@ -357,6 +358,19 @@ export default {
       this.speech = Math.ceil(2 + (2 * this.charisma) + (this.luck / 2));
       this.survival = Math.ceil(2 + (2 * this.endurance) + (this.luck / 2));
       this.unarmed = Math.ceil(2 + (2 * this.endurance) + (this.luck / 2));
+    },
+    toggleSkill: function(event){
+      if(this.selectedSkills.length < 3 || this.selectedSkills.includes(event.target.id)){
+        if(this.selectedSkills.includes(event.target.id)){
+          const index = this.selectedSkills.indexOf(event.target.id);
+          this.selectedSkills.splice(index, 1);
+          document.getElementById(event.target.id).classList.remove("bold");
+        } else {
+          this.selectedSkills.push(event.target.id);
+          document.getElementById(event.target.id).classList.add("bold");
+        }
+        console.log(this.selectedSkills);
+      }
     }
   }
 }
@@ -451,6 +465,9 @@ a {
   width: 21px;
   height: 2px;
   float: right;
+}
+.bold{
+  font-weight: bold;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
