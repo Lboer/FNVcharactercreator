@@ -244,98 +244,98 @@ export default {
         this.strength++;
         this.remainingPoints--;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     downStrength: function() {
       if(this.strength > 1){
         this.strength--;
         this.remainingPoints++;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     upPerception: function() {
       if(this.perception < 10 && this.remainingPoints > 0){
         this.perception++;
         this.remainingPoints--;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     downPerception: function() {
       if(this.perception > 1){
         this.perception--;
         this.remainingPoints++;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     upEndurance: function() {
       if(this.endurance < 10 && this.remainingPoints > 0){
         this.endurance++;
         this.remainingPoints--;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     downEndurance: function() {
       if(this.endurance > 1){
         this.endurance--;
         this.remainingPoints++;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     upCharisma: function() {
       if(this.charisma < 10 && this.remainingPoints > 0){
         this.charisma++;
         this.remainingPoints--;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     downCharisma: function() {
       if(this.charisma > 1){
         this.charisma--;
         this.remainingPoints++;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     upIntelligence: function() {
       if(this.intelligence < 10 && this.remainingPoints > 0){
         this.intelligence++;
         this.remainingPoints--;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     downIntelligence: function() {
       if(this.intelligence > 1){
         this.intelligence--;
         this.remainingPoints++;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     upAgility: function() {
       if(this.agility < 10 && this.remainingPoints > 0){
         this.agility++;
         this.remainingPoints--;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     downAgility: function() {
       if(this.agility > 1){
         this.agility--;
         this.remainingPoints++;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     upLuck: function() {
       if(this.luck < 10 && this.remainingPoints > 0){
         this.luck++;
         this.remainingPoints--;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     downLuck: function() {
       if(this.luck > 1){
         this.luck--;
         this.remainingPoints++;
       }
-      this.updateSkills()
+      this.updateAll()
     },
     traitDescription: function(name) {
       for (var i=0; i < this.traits.length; i++) {
@@ -369,7 +369,56 @@ export default {
           this.selectedSkills.push(event.target.id);
           document.getElementById(event.target.id).classList.add("bold");
         }
-        console.log(this.selectedSkills);
+        this.updateAll();
+      }
+    },
+    updateAll: function(){
+      this.updateSkills();
+      this.updateTags();
+    },
+    updateTags: function(){
+      for(var i = 0; i < this.selectedSkills.length; i++){
+        switch(this.selectedSkills[i]){
+          case "barter":
+            this.barter += 15;
+            break;
+          case "energy":
+            this.energy += 15;
+            break;
+          case "explosives":
+            this.explosives += 15;
+            break;
+          case "guns":
+            this.guns += 15;
+            break;
+          case "lockpick":
+            this.lockpick += 15;
+            break;
+          case "medicine":
+            this.medicine += 15;
+            break;
+          case "melee":
+            this.melee += 15;
+            break;
+          case "repair":
+            this.repair += 15;
+            break;
+          case "science":
+            this.science += 15;
+            break;
+          case "sneak":
+            this.sneak += 15;
+            break;
+          case "speech":
+            this.speech += 15;
+            break;
+          case "survival":
+            this.survival += 15;
+            break;
+          case "unarmed":
+            this.unarmed += 15;
+            break;
+        }
       }
     }
   }
@@ -468,6 +517,7 @@ a {
 }
 .bold{
   font-weight: bold;
+  font-style: italic;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
