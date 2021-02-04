@@ -3,177 +3,181 @@
     <h1>{{ msg }}</h1>
     <div class="container">
       <!-- Block 1: SPECIAL stats, name and faction. -->
-      <div class="special">
-        <div class="special-box">
+      <div class="row">
+        <div class="special">
+          <div class="special-box">
+            <label class="text">
+              Name
+            </label>
+            <input class="name" value="Courier">
+          </div>
+          <div class="special-box">
+            <label class="text">
+              Faction
+            </label>
+            <select name="factions" class="name" v-model="selectedFaction">
+              <option v-for="faction in factions" v-bind:key="faction.name" v-bind:value="{ name: faction.name, text: faction.description }">
+                {{ faction.name }}
+              </option>
+            </select>
+          </div>
+          <div class="header"></div>
+          <div class="special-box">
+            <label class="text">
+              Strength
+            </label>
+            <div class="up" v-on:click="upStrength" id="strUp">+</div>
+            <input class="score" type="number" max="10" min="1" :value="strength">
+            <div class="down" v-on:click="downStrength" id="strDown">-</div>
+          </div>
+          <div class="special-box">
+            <label class="text">
+              Perception
+            </label>
+            <div class="up" v-on:click="upPerception">+</div>
+            <input class="score" type="number" max="10" min="1" :value="perception">
+            <div class="down" v-on:click="downPerception">-</div>
+          </div>
+          <div class="special-box">
+            <label class="text">
+              Endurance
+            </label>
+            <div class="up" v-on:click="upEndurance">+</div>
+            <input class="score" type="number" max="10" min="1" :value="endurance">
+            <div class="down" v-on:click="downEndurance">-</div>
+          </div>
+          <div class="special-box">
+            <label class="text">
+              Charisma
+            </label>
+            <div class="up" v-on:click="upCharisma">+</div>
+            <input class="score" type="number" max="10" min="1" :value="charisma">
+            <div class="down" v-on:click="downCharisma">-</div>
+          </div>
+          <div class="special-box">
+            <label class="text">
+              Intelligence
+            </label>
+            <div class="up" v-on:click="upIntelligence">+</div>
+            <input class="score" type="number" max="10" min="1" :value="intelligence">
+            <div class="down" v-on:click="downIntelligence">-</div>
+          </div>
+          <div class="special-box">
+            <label class="text">
+              Agility
+            </label>
+            <div class="up" v-on:click="upAgility">+</div>
+            <input class="score" type="number" max="10" min="1" :value="agility">
+            <div class="down" v-on:click="downAgility">-</div>
+          </div>
+          <div class="special-box">
+            <label class="text">
+              Luck
+            </label>
+            <div class="up" v-on:click="upLuck">+</div>
+            <input class="score" type="number" max="10" min="1" :value="luck">
+            <div class="down" v-on:click="downLuck">-</div>
+          </div>
           <label class="text">
-            Name
+            Remaining points: 
+            <div class="barrier"></div>
+            <input class="score" type="number" readonly :value="remainingPoints">
           </label>
-          <input class="name" value="Courier">
+          <div class="header"></div>
+          <p class="text" v-if="selectedFaction != null">{{ selectedFaction.text }}</p>
         </div>
-        <div class="special-box">
-          <label class="text">
-            Faction
-          </label>
-          <select name="factions" class="name" v-model="selectedFaction">
-            <option v-for="faction in factions" v-bind:key="faction.name" v-bind:value="{ name: faction.name, text: faction.description }">
-              {{ faction.name }}
-            </option>
-          </select>
+        <!-- Block 2: Starting perks and description -->
+        <div class="special">
+          <div v-for="trait in traits" :key="trait.name">
+            <input type="checkbox" :value="trait.name" v-model="selectedTraits" :disabled="selectedTraits.length > 1 && selectedTraits.indexOf(trait.name) === -1">
+            <label class="text" :for="trait.name"> {{ trait.name }}</label>
+          </div>
+          <div class="header"></div>
+          <p class="text" v-if="selectedTraits[0] != null"> {{ traitDescription(selectedTraits[0]) }}</p>
+          <p class="text" v-if="selectedTraits[1] != null"> {{ traitDescription(selectedTraits[1]) }}</p>
         </div>
-        <div class="header"></div>
-        <div class="special-box">
-          <label class="text">
-            Strength
-          </label>
-          <div class="up" v-on:click="upStrength" id="strUp">+</div>
-          <input class="score" type="number" max="10" min="1" :value="strength">
-          <div class="down" v-on:click="downStrength" id="strDown">-</div>
-        </div>
-        <div class="special-box">
-          <label class="text">
-            Perception
-          </label>
-          <div class="up" v-on:click="upPerception">+</div>
-          <input class="score" type="number" max="10" min="1" :value="perception">
-          <div class="down" v-on:click="downPerception">-</div>
-        </div>
-        <div class="special-box">
-          <label class="text">
-            Endurance
-          </label>
-          <div class="up" v-on:click="upEndurance">+</div>
-          <input class="score" type="number" max="10" min="1" :value="endurance">
-          <div class="down" v-on:click="downEndurance">-</div>
-        </div>
-        <div class="special-box">
-          <label class="text">
-            Charisma
-          </label>
-          <div class="up" v-on:click="upCharisma">+</div>
-          <input class="score" type="number" max="10" min="1" :value="charisma">
-          <div class="down" v-on:click="downCharisma">-</div>
-        </div>
-        <div class="special-box">
-          <label class="text">
-            Intelligence
-          </label>
-          <div class="up" v-on:click="upIntelligence">+</div>
-          <input class="score" type="number" max="10" min="1" :value="intelligence">
-          <div class="down" v-on:click="downIntelligence">-</div>
-        </div>
-        <div class="special-box">
-          <label class="text">
-            Agility
-          </label>
-          <div class="up" v-on:click="upAgility">+</div>
-          <input class="score" type="number" max="10" min="1" :value="agility">
-          <div class="down" v-on:click="downAgility">-</div>
-        </div>
-        <div class="special-box">
-          <label class="text">
-            Luck
-          </label>
-          <div class="up" v-on:click="upLuck">+</div>
-          <input class="score" type="number" max="10" min="1" :value="luck">
-          <div class="down" v-on:click="downLuck">-</div>
-        </div>
-        <label class="text">
-          Remaining points: 
-          <div class="barrier"></div>
-          <input class="score" type="number" readonly :value="remainingPoints">
-        </label>
-        <div class="header"></div>
-        <p class="text" v-if="selectedFaction != null">{{ selectedFaction.text }}</p>
-      </div>
-      <!-- Block 2: Starting perks and description -->
-      <div class="special">
-        <div v-for="trait in traits" :key="trait.name">
-          <input type="checkbox" :value="trait.name" v-model="selectedTraits" :disabled="selectedTraits.length > 1 && selectedTraits.indexOf(trait.name) === -1">
-          <label class="text" :for="trait.name"> {{ trait.name }}</label>
-        </div>
-        <div class="header"></div>
-        <p class="text" v-if="selectedTraits[0] != null"> {{ traitDescription(selectedTraits[0]) }}</p>
-        <p class="text" v-if="selectedTraits[1] != null"> {{ traitDescription(selectedTraits[1]) }}</p>
-      </div>
-      <!-- Block 3: Skills -->
-      <div class="special">
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="barter">
-            Barter
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="barter" readonly>
-        </div>
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="energy">
-            Energy Weapons
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="energy" readonly>
-        </div>
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="explosives">
-            Explosives
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="explosives" readonly>
-        </div>
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="guns">
-            Guns
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="guns" readonly>
-        </div>
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="lockpick">
-            Lockpick
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="lockpick" readonly>
-        </div>
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="medicine">
-            Medicine
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="medicine" readonly>
-        </div>
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="melee">
-            Melee Weapons
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="melee" readonly>
-        </div>
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="repair">
-            Repair
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="repair" readonly>
-        </div>
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="science">
-            Science
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="science" readonly>
-        </div>
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="sneak">
-            Sneak
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="sneak" readonly>
-        </div>
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="speech">
-            Speech
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="speech" readonly>
-        </div>
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="survival">
-            Survival
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="survival" readonly>
-        </div>
-        <div class="special-box">
-          <label v-on:click="toggleSkill" class="text" id="unarmed">
-            Unarmed
-          </label>
-          <input class="score" type="number" max="100" min="1" :value="unarmed" readonly>
+        <!-- Block 3: Skills -->
+        <div class="special">
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="barter">
+              Barter
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="barter" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="energy">
+              Energy Weapons
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="energy" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="explosives">
+              Explosives
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="explosives" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="guns">
+              Guns
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="guns" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="lockpick">
+              Lockpick
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="lockpick" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="medicine">
+              Medicine
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="medicine" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="melee">
+              Melee Weapons
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="melee" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="repair">
+              Repair
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="repair" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="science">
+              Science
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="science" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="sneak">
+              Sneak
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="sneak" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="speech">
+              Speech
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="speech" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="survival">
+              Survival
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="survival" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="unarmed">
+              Unarmed
+            </label>
+            <input class="score" type="number" max="100" min="1" :value="unarmed" readonly>
+          </div>
+          <div class="header"></div>
+          <!-- Place Action Points, Equipment Weight & Damage percentage based upon chosen weapon -->
         </div>
       </div>
     </div>
@@ -375,6 +379,7 @@ export default {
     updateAll: function(){
       this.updateSkills();
       this.updateTags();
+      this.updateTraits();
     },
     updateTags: function(){
       for(var i = 0; i < this.selectedSkills.length; i++){
@@ -420,7 +425,15 @@ export default {
             break;
         }
       }
-    }
+    },
+    // updateTraits: function(){
+    //   for(var i = 0; i < this.selectedTraits.length; i++){
+    //     switch(this.selectedTraits[i]){
+    //       case "Four Eyes":
+    //         this.perception -= 1;
+    //     }
+    //   }
+    //}
   }
 }
 </script>
@@ -444,6 +457,10 @@ a {
 .container{
   width: 60%;
   margin: auto;
+  display: table;
+}
+.row{
+  display: table-row;
 }
 .special{
   background-color: #363027;
@@ -451,8 +468,9 @@ a {
   display: inline-block;
   padding: 5px;
   border: 1px solid #666666;
-  width: 30%;
+  width: 32%;
   margin-top: 10px;
+  display: table-cell;
 }
 .name{
   color: #ffb642;
