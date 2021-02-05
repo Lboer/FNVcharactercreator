@@ -102,82 +102,94 @@
             <label v-on:click="toggleSkill" class="text" id="barter">
               Barter
             </label>
-            <input class="score" type="number" max="100" min="1" :value="barter" readonly>
+            <input class="score" type="number" :value="barter" readonly>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="energy">
               Energy Weapons
             </label>
-            <input class="score" type="number" max="100" min="1" :value="energy" readonly>
+            <input class="score" type="number" :value="energy" readonly>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="explosives">
               Explosives
             </label>
-            <input class="score" type="number" max="100" min="1" :value="explosives" readonly>
+            <input class="score" type="number" :value="explosives" readonly>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="guns">
               Guns
             </label>
-            <input class="score" type="number" max="100" min="1" :value="guns" readonly>
+            <input class="score" type="number" :value="guns" readonly>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="lockpick">
               Lockpick
             </label>
-            <input class="score" type="number" max="100" min="1" :value="lockpick" readonly>
+            <input class="score" type="number" :value="lockpick" readonly>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="medicine">
               Medicine
             </label>
-            <input class="score" type="number" max="100" min="1" :value="medicine" readonly>
+            <input class="score" type="number" :value="medicine" readonly>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="melee">
               Melee Weapons
             </label>
-            <input class="score" type="number" max="100" min="1" :value="melee" readonly>
+            <input class="score" type="number" :value="melee" readonly>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="repair">
               Repair
             </label>
-            <input class="score" type="number" max="100" min="1" :value="repair" readonly>
+            <input class="score" type="number" :value="repair" readonly>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="science">
               Science
             </label>
-            <input class="score" type="number" max="100" min="1" :value="science" readonly>
+            <input class="score" type="number" :value="science" readonly>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="sneak">
               Sneak
             </label>
-            <input class="score" type="number" max="100" min="1" :value="sneak" readonly>
+            <input class="score" type="number" :value="sneak" readonly>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="speech">
               Speech
             </label>
-            <input class="score" type="number" max="100" min="1" :value="speech" readonly>
+            <input class="score" type="number" :value="speech" readonly>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="survival">
               Survival
             </label>
-            <input class="score" type="number" max="100" min="1" :value="survival" readonly>
+            <input class="score" type="number" :value="survival" readonly>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="unarmed">
               Unarmed
             </label>
-            <input class="score" type="number" max="100" min="1" :value="unarmed" readonly>
+            <input class="score" type="number" :value="unarmed" readonly>
           </div>
           <div class="header"></div>
           <!-- Place Action Points, Equipment Weight & Damage percentage based upon chosen weapon -->
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="ap">
+              Action Points
+            </label>
+            <input class="score" type="number" :value="ap" readonly>
+          </div>
+          <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="carry">
+              Carry Weight
+            </label>
+            <input class="score" type="number" :value="carry" readonly>
+          </div>
         </div>
       </div>
     </div>
@@ -213,6 +225,8 @@ export default {
         speech: null,
         survival: null,
         unarmed: null,
+        ap: null,
+        equip: null,
         selectedTraits: [],
         selectedFaction: null,
         factions: [
@@ -362,6 +376,8 @@ export default {
       this.speech = Math.ceil(2 + (2 * this.charisma) + (this.luck / 2));
       this.survival = Math.ceil(2 + (2 * this.endurance) + (this.luck / 2));
       this.unarmed = Math.ceil(2 + (2 * this.endurance) + (this.luck / 2));
+      this.ap = Math.ceil(65 + (3 * this.agility));
+      this.carry = Math.ceil(150 + (this.strength * 10));
     },
     toggleSkill: function(event){
       if(this.selectedSkills.length < 3 || this.selectedSkills.includes(event.target.id)){
