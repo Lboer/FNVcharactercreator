@@ -179,6 +179,12 @@
           <div class="header"></div>
           <!-- Place Action Points, Equipment Weight & Damage percentage based upon chosen weapon -->
           <div class="special-box">
+            <label v-on:click="toggleSkill" class="text" id="hp">
+              Health Points
+            </label>
+            <input class="score" type="number" :value="hp" readonly>
+          </div>
+          <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="ap">
               Action Points
             </label>
@@ -227,6 +233,8 @@ export default {
         unarmed: null,
         ap: null,
         equip: null,
+        hp: null,
+        level: 1,
         selectedTraits: [],
         selectedFaction: null,
         factions: [
@@ -360,7 +368,7 @@ export default {
         if (this.traits[i].name === name) {
             return this.traits[i].description;
         }
-    }
+      }
     },
     updateSkills: function(){
       this.barter = Math.ceil(2 + (2 * this.charisma) + (this.luck / 2));
@@ -378,6 +386,7 @@ export default {
       this.unarmed = Math.ceil(2 + (2 * this.endurance) + (this.luck / 2));
       this.ap = Math.ceil(65 + (3 * this.agility));
       this.carry = Math.ceil(150 + (this.strength * 10));
+      this.hp = Math.ceil(100+(this.endurance * 5) + ((this.level - 1) * 5));
     },
     toggleSkill: function(event){
       if(this.selectedSkills.length < 3 || this.selectedSkills.includes(event.target.id)){
@@ -395,7 +404,7 @@ export default {
     updateAll: function(){
       this.updateSkills();
       this.updateTags();
-      this.updateTraits();
+      //this.updateTraits();
     },
     updateTags: function(){
       for(var i = 0; i < this.selectedSkills.length; i++){
@@ -442,14 +451,58 @@ export default {
         }
       }
     },
-    // updateTraits: function(){
-    //   for(var i = 0; i < this.selectedTraits.length; i++){
-    //     switch(this.selectedTraits[i]){
-    //       case "Four Eyes":
-    //         this.perception -= 1;
-    //     }
-    //   }
-    //}
+    updateTraits: function(){
+      for(var i = 0; i < this.selectedTraits.length; i++){
+        switch(this.selectedTraits[i]){
+          case "Four Eyes":
+            this.perception -= 1;
+            break;
+          case "Good Natured":
+            this.speech += 5;
+            this.medicine += 5;
+            this.repair += 5;
+            this.science += 5;
+            this.barter += 5;
+            this.energy -= 5;
+            this.explosives -= 5;
+            this.guns -= 5;
+            this.melee -= 5;
+            this.unarmed -= 5;
+            break;
+          case "Hoarder":
+            this.equip += 25;
+            this.strength -= 1;
+            this.perception -= 1;
+            this.endurance -= 1;
+            this.charisma -= 1;
+            this.intelligence -= 1;
+            this.agility -= 1;
+            this.luck -= 1;
+            break;
+          case "Kamikaze":
+            this.ap += 10;
+            break;
+          case "Skilled":
+            this.barter += 5;
+            this.energy += 5;
+            this.explosives += 5;
+            this.guns += 5;
+            this.lockpick += 5;
+            this.medicine += 5;
+            this.melee += 5;
+            this.repair += 5;
+            this.science += 5;
+            this.sneak += 5;
+            this.speech += 5;
+            this.survival += 5;
+            this.unarmed += 5;
+            break;
+          case "Small Frame":
+            this.agility += 1;
+            break;
+        }
+      }
+    }
   }
 }
 </script>
