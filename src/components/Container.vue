@@ -89,7 +89,8 @@
         <!-- Block 2: Starting perks and description -->
         <div class="special">
           <div v-for="trait in traits" :key="trait.name">
-            <input type="checkbox" :value="trait.name" v-model="selectedTraits" :disabled="selectedTraits.length > 1 && selectedTraits.indexOf(trait.name) === -1">
+            <input type="checkbox" :value="trait.name" v-model="selectedTraits" 
+            :disabled="selectedTraits.length > 1 && selectedTraits.indexOf(trait.name) === -1"  @change="updateAll()">
             <label class="text" :for="trait.name"> {{ trait.name }}</label>
           </div>
           <div class="header"></div>
@@ -237,6 +238,9 @@ export default {
         level: 1,
         selectedTraits: [],
         selectedFaction: null,
+        selectedFourEyes: false,
+        selectedHoarder: false,
+        selectedSmallFrame: false,
         factions: [
           {name: "NCR", description: "The NCR emphasizes and strives to support a plethora of old world values, such as democracy, personal liberty, and the rule of law. It also aims to restore general order to the wasteland, the improvement and development of infrastructure and economic systems, and overarching peace between people. Similar to institutions of the old world it seeks to emulate, continued expansion has created challenges with territorial control, loyalty, and corruption that plague the Republic and serve to hinder its goals. The NCR is often criticized by residents of the Mojave wasteland as well as other factions for being hawkish, imperialistic, poorly managed and over-extended in the region, and trying to attempt to emulate old world values that led to nuclear holocaust in the first place."},
           {name: "The Legion", description:"Caesar's Legion is an imperialistic, ultra-reactionary totalitarian dictatorship based on large scale slavery. Founded in 2247 by Edward Sallow, who then renamed himself Caesar, and Joshua Graham (also known as the Malpais Legate). The Legion uses trappings of the ancient Roman Empire as part of a unifying identity imposed on its tribes but does not recreate any cultural, social, or political institutions of ancient Rome. The Legion itself is simply a slave army built on ruthlessly utilitarian principles, supported by several tributary populations."},
@@ -404,7 +408,7 @@ export default {
     updateAll: function(){
       this.updateSkills();
       this.updateTags();
-      //this.updateTraits();
+      this.updateTraits();
     },
     updateTags: function(){
       for(var i = 0; i < this.selectedSkills.length; i++){
@@ -455,7 +459,10 @@ export default {
       for(var i = 0; i < this.selectedTraits.length; i++){
         switch(this.selectedTraits[i]){
           case "Four Eyes":
-            this.perception -= 1;
+            if(!this.selectedFourEyes){
+              this.perception -= 1;
+              this.selectedFourEyes = true;
+            }
             break;
           case "Good Natured":
             this.speech += 5;
@@ -470,14 +477,17 @@ export default {
             this.unarmed -= 5;
             break;
           case "Hoarder":
-            this.equip += 25;
-            this.strength -= 1;
-            this.perception -= 1;
-            this.endurance -= 1;
-            this.charisma -= 1;
-            this.intelligence -= 1;
-            this.agility -= 1;
-            this.luck -= 1;
+            if(!this.selectedHoarder){
+              this.equip += 25;
+              this.strength -= 1;
+              this.perception -= 1;
+              this.endurance -= 1;
+              this.charisma -= 1;
+              this.intelligence -= 1;
+              this.agility -= 1;
+              this.luck -= 1;
+              this.selectedHoarder = true;
+            }
             break;
           case "Kamikaze":
             this.ap += 10;
@@ -498,7 +508,10 @@ export default {
             this.unarmed += 5;
             break;
           case "Small Frame":
-            this.agility += 1;
+            if(!this.selectedSmallFrame){
+              this.agility += 1;
+              this.selectedSmallFrame = true;
+            }
             break;
         }
       }
