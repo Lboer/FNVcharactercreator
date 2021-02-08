@@ -205,70 +205,71 @@
 
 <script>
 export default {
-  name: 'Container',
-  props: {
-    msg: String
-  },
    data: function () {
     return {
-        strength: 5,
-        perception: 5,
-        endurance: 5,
-        charisma: 5,
-        intelligence: 5,
-        agility: 5,
-        luck: 5,
-        remainingPoints: 5,
-        barter: null,
-        energy: null,
-        explosives: null,
-        guns: null,
-        lockpick: null,
-        medicine: null,
-        melee: null,
-        repair: null,
-        science: null,
-        sneak: null,
-        speech: null,
-        survival: null,
-        unarmed: null,
-        ap: null,
-        equip: null,
-        hp: null,
-        level: 1,
-        selectedTraits: [],
-        selectedFaction: null,
-        selectedFourEyes: false,
-        selectedHoarder: false,
-        selectedSmallFrame: false,
-        factions: [
-          {name: "NCR", description: "The NCR emphasizes and strives to support a plethora of old world values, such as democracy, personal liberty, and the rule of law. It also aims to restore general order to the wasteland, the improvement and development of infrastructure and economic systems, and overarching peace between people. Similar to institutions of the old world it seeks to emulate, continued expansion has created challenges with territorial control, loyalty, and corruption that plague the Republic and serve to hinder its goals. The NCR is often criticized by residents of the Mojave wasteland as well as other factions for being hawkish, imperialistic, poorly managed and over-extended in the region, and trying to attempt to emulate old world values that led to nuclear holocaust in the first place."},
-          {name: "The Legion", description:"Caesar's Legion is an imperialistic, ultra-reactionary totalitarian dictatorship based on large scale slavery. Founded in 2247 by Edward Sallow, who then renamed himself Caesar, and Joshua Graham (also known as the Malpais Legate). The Legion uses trappings of the ancient Roman Empire as part of a unifying identity imposed on its tribes but does not recreate any cultural, social, or political institutions of ancient Rome. The Legion itself is simply a slave army built on ruthlessly utilitarian principles, supported by several tributary populations."},
-          {name: "Mr. House", description:"Robert Edwin House is the self-styled president, CEO, and sole proprietor of the New Vegas Strip in the Mojave Wasteland in the year 2281. Prior to the Great War, House was an ever-alluring, reclusive enigma to the world and a veritable celebrity with various tabloids and news articles covering his every move in business and private life. His founding of RobCo Industries propelled him to the top through business savvy using mathematical prediction algorithms; gaining the envy of other roboticists and corporations through sheer success. As such, RobCo technology became ubiquitous across the former United States both in the civilian and military sectors, and shaping the technological progression of it."},
-          {name: "Yes Man", description:"Yes Man was originally a generic securitron robot programmed to work for Mr. House like all the other securitrons found on the Strip. He was recovered by Benny and several of the Chairmen after being damaged by a pulse grenade. Following this incident, Followers of the Apocalypse member Emily Ortal examined the securitron in order to learn Mr. House's secrets in exchange for reprogramming him for Benny's personal use. The reprogramming resulted in Yes Man doing exactly as he was told. Yes Man will help you take down House and rule New Vegas in your stead."}
-        ],
-        traits: [
-          {name: "Built to Destroy", description: "+3% weapon critical hit chance; but weapon condition decays 15% faster."},
-          {name: "Claustrophobia", description: "+1 to all SPECIAL attributes while outside; but -1 when indoors."},
-          {name: "Early Bird", description: "+2 to all SPECIAL attributes from 6am to 12pm; but -1 from 6pm to 6am."},
-          {name: "Fast Shot", description: "Guns and energy weapons you fire are 20% quicker, Action Point cost for your guns and energy weapons are 20% lower; but guns and energy weapons are 20% less acurate."},
-          {name: "Four Eyes", description: "+2 Perception when wearing glasses, bonus does not apply when determining Perk requirements; but -1 permanent perception reduction."},
-          {name: "Good Natured", description: "Increase Speech, Medicine, Repair, Science and Barter skill +5; but decreases Energy Weapons, Explosives, Guns, Melee Weapons and Unarmed skills by 5."},
-          {name: "Heavy Handed", description: "Melee and Unarmed do 20% more damage; but Melee and Unarmed criticals do 60% less damage."},
-          {name: "Hoarder", description: "+25 lbs to total carry weight; but -1 to all SPECIAL attributes while current equipment weight is below 160 lbs."},
-          {name: "Hot Blooded", description: "+15% damage while below 50% health; but -2 Perception and Agility while below 50% health."},
-          {name: "Kamikaze", description: "+10 Action Points; but -2 damage threshold."},
-          {name: "Logan's Loophole", description: "Chems last twice as long and addiction rates are set to zero; but locks the level cap at 30."},
-          {name: "Loose Cannon", description: "Attack speed with thrown weapons is increased by 30%; but thrown weapons have 25% less range."},
-          {name: "Skilled", description: "+5 to every skill, but 10% less experience gained."},
-          {name: "Small Frame", description: "+1 Agility; but 25% extra limb damage."},
-          {name: "Trigger Discipline", description: "Guns and Energy Weapons you fire are 20% more accurate, but Guns and Energy weapons you fire are 20% slower and Action Points cost for your guns and energy weapons are 20% higher."},
-          {name: "Wild Wasteland", description: "Adds additional 'wacky' content and modifies existing content and special encounters"}
-        ],
-        selectedSkills: [],
+      // Initializing data
+      strength: 5,
+      perception: 5,
+      endurance: 5,
+      charisma: 5,
+      intelligence: 5,
+      agility: 5,
+      luck: 5,
+      remainingPoints: 5,
+      barter: null,
+      energy: null,
+      explosives: null,
+      guns: null,
+      lockpick: null,
+      medicine: null,
+      melee: null,
+      repair: null,
+      science: null,
+      sneak: null,
+      speech: null,
+      survival: null,
+      unarmed: null,
+      ap: null,
+      equip: null,
+      hp: null,
+      level: 1,
+      // Choosing a faction/ multiple traits
+      factions: [
+        {name: "NCR", description: "The NCR emphasizes and strives to support a plethora of old world values, such as democracy, personal liberty, and the rule of law. It also aims to restore general order to the wasteland, the improvement and development of infrastructure and economic systems, and overarching peace between people. Similar to institutions of the old world it seeks to emulate, continued expansion has created challenges with territorial control, loyalty, and corruption that plague the Republic and serve to hinder its goals. The NCR is often criticized by residents of the Mojave wasteland as well as other factions for being hawkish, imperialistic, poorly managed and over-extended in the region, and trying to attempt to emulate old world values that led to nuclear holocaust in the first place."},
+        {name: "The Legion", description:"Caesar's Legion is an imperialistic, ultra-reactionary totalitarian dictatorship based on large scale slavery. Founded in 2247 by Edward Sallow, who then renamed himself Caesar, and Joshua Graham (also known as the Malpais Legate). The Legion uses trappings of the ancient Roman Empire as part of a unifying identity imposed on its tribes but does not recreate any cultural, social, or political institutions of ancient Rome. The Legion itself is simply a slave army built on ruthlessly utilitarian principles, supported by several tributary populations."},
+        {name: "Mr. House", description:"Robert Edwin House is the self-styled president, CEO, and sole proprietor of the New Vegas Strip in the Mojave Wasteland in the year 2281. Prior to the Great War, House was an ever-alluring, reclusive enigma to the world and a veritable celebrity with various tabloids and news articles covering his every move in business and private life. His founding of RobCo Industries propelled him to the top through business savvy using mathematical prediction algorithms; gaining the envy of other roboticists and corporations through sheer success. As such, RobCo technology became ubiquitous across the former United States both in the civilian and military sectors, and shaping the technological progression of it."},
+        {name: "Yes Man", description:"Yes Man was originally a generic securitron robot programmed to work for Mr. House like all the other securitrons found on the Strip. He was recovered by Benny and several of the Chairmen after being damaged by a pulse grenade. Following this incident, Followers of the Apocalypse member Emily Ortal examined the securitron in order to learn Mr. House's secrets in exchange for reprogramming him for Benny's personal use. The reprogramming resulted in Yes Man doing exactly as he was told. Yes Man will help you take down House and rule New Vegas in your stead."}
+      ],
+      traits: [
+        {name: "Built to Destroy", description: "+3% weapon critical hit chance; but weapon condition decays 15% faster."},
+        {name: "Claustrophobia", description: "+1 to all SPECIAL attributes while outside; but -1 when indoors."},
+        {name: "Early Bird", description: "+2 to all SPECIAL attributes from 6am to 12pm; but -1 from 6pm to 6am."},
+        {name: "Fast Shot", description: "Guns and energy weapons you fire are 20% quicker, Action Point cost for your guns and energy weapons are 20% lower; but guns and energy weapons are 20% less acurate."},
+        {name: "Four Eyes", description: "+2 Perception when wearing glasses, bonus does not apply when determining Perk requirements; but -1 permanent perception reduction."},
+        {name: "Good Natured", description: "Increase Speech, Medicine, Repair, Science and Barter skill +5; but decreases Energy Weapons, Explosives, Guns, Melee Weapons and Unarmed skills by 5."},
+        {name: "Heavy Handed", description: "Melee and Unarmed do 20% more damage; but Melee and Unarmed criticals do 60% less damage."},
+        {name: "Hoarder", description: "+25 lbs to total carry weight; but -1 to all SPECIAL attributes while current equipment weight is below 160 lbs."},
+        {name: "Hot Blooded", description: "+15% damage while below 50% health; but -2 Perception and Agility while below 50% health."},
+        {name: "Kamikaze", description: "+10 Action Points; but -2 damage threshold."},
+        {name: "Logan's Loophole", description: "Chems last twice as long and addiction rates are set to zero; but locks the level cap at 30."},
+        {name: "Loose Cannon", description: "Attack speed with thrown weapons is increased by 30%; but thrown weapons have 25% less range."},
+        {name: "Skilled", description: "+5 to every skill, but 10% less experience gained."},
+        {name: "Small Frame", description: "+1 Agility; but 25% extra limb damage."},
+        {name: "Trigger Discipline", description: "Guns and Energy Weapons you fire are 20% more accurate, but Guns and Energy weapons you fire are 20% slower and Action Points cost for your guns and energy weapons are 20% higher."},
+        {name: "Wild Wasteland", description: "Adds additional 'wacky' content and modifies existing content and special encounters"}
+      ],
+      // Keeping track of chosen skills/traits/ faction
+      selectedSkills: [],
+      selectedTraits: [],
+      selectedFaction: null,
+      // Booleans to make sure certain traits are reversible.
+      selectedFourEyes: false,
+      selectedHoarder: false,
+      selectedSmallFrame: false,
     }
   },
   methods:{
+    // Upgrading SPECIAL stats.
     upStrength: function() {
       if(this.strength < 10 && this.remainingPoints > 0){
         this.strength++;
@@ -459,7 +460,7 @@ export default {
       for(var i = 0; i < this.selectedTraits.length; i++){
         switch(this.selectedTraits[i]){
           case "Four Eyes":
-            if(!this.selectedFourEyes){
+            if(!this.selectedFourEyes && this.perception < 10 && this.perception > 1){
               this.perception -= 1;
               this.selectedFourEyes = true;
             }
@@ -477,7 +478,8 @@ export default {
             this.unarmed -= 5;
             break;
           case "Hoarder":
-            if(!this.selectedHoarder){
+            if(!this.selectedHoarder && this.strength > 1 && this.perception > 1 && this.endurance > 1 
+              && this.charisma > 1 && this.intelligence > 1 && this.agility > 1 && this.luck > 1){
               this.equip += 25;
               this.strength -= 1;
               this.perception -= 1;
@@ -508,7 +510,7 @@ export default {
             this.unarmed += 5;
             break;
           case "Small Frame":
-            if(!this.selectedSmallFrame){
+            if(!this.selectedSmallFrame && this.agility < 10){
               this.agility += 1;
               this.selectedSmallFrame = true;
             }
