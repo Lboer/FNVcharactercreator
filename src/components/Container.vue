@@ -517,6 +517,26 @@ export default {
             break;
         }
       }
+      // Check if Four Eyes, Hoarder or Small Frame were selected and are no longer selected. Reverts back stats if so.
+      if(this.selectedFourEyes && this.selectedTraits[0] != "Four Eyes" && this.selectedTraits[1] != "Four Eyes"){
+        this.selectedFourEyes = false;
+        this.perception += 1;
+      }
+      if(this.selectedHoarder && this.selectedTraits[0] != "Hoarder" && this.selectedTraits[1] != "Hoarder"){
+        this.selectedHoarder = false;
+        this.equip -= 25;
+        this.strength += 1;
+        this.perception += 1;
+        this.endurance += 1;
+        this.charisma += 1;
+        this.intelligence += 1;
+        this.agility += 1;
+        this.luck += 1;
+      }
+      if(this.selectedSmallFrame && this.selectedTraits[0] != "Small Frame" && this.selectedTraits[1] != "Small Frame"){
+        this.selectedSmallFrame = false;
+        this.agility -= 1;
+      }
     }
   }
 }
