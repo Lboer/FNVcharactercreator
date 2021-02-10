@@ -23,6 +23,13 @@
           </div>
           <div class="header"></div>
           <div class="special-box">
+            <label class="text" id="level">
+              Level
+            </label>
+            <div class="barrier"></div>
+            <input class="score" type="number" :value="level" readonly>
+          </div>
+          <div class="special-box">
             <label class="text">
               Strength
             </label>
@@ -197,6 +204,10 @@
             </label>
             <input class="score" type="number" :value="carry" readonly>
           </div>
+          <div class="header"></div>
+          <button class="lvlUp">
+            Level up
+          </button>
         </div>
       </div>
     </div>
@@ -625,6 +636,14 @@ a {
   font-weight: bold;
   cursor: pointer;
 }
+.lvlUp{
+  background-color: #ffb642;
+  color: #4d4336;
+  border: #666666;
+  float: right;
+  padding: 5px;
+  border-radius: 8px;
+}
 .header{
     font-size: 12px;
     font-weight: bold;
@@ -633,7 +652,7 @@ a {
     border-bottom: 2px solid #ffb642;
 }
 .barrier{
-  width: 21px;
+  width: 21.5px;
   height: 2px;
   float: right;
 }
