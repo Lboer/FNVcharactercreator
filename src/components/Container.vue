@@ -1,6 +1,5 @@
 <template>
   <div class="top">
-    <h1>{{ msg }}</h1>
     <div class="container">
       <!-- Block 1: SPECIAL stats, name and faction. -->
       <div class="row">
@@ -187,25 +186,25 @@
           <div class="header"></div>
           <!-- Place Action Points, Equipment Weight & Damage percentage based upon chosen weapon -->
           <div class="special-box">
-            <label v-on:click="toggleSkill" class="text" id="hp">
+            <label class="text" id="hp">
               Health Points
             </label>
             <input class="score" type="number" :value="hp" readonly>
           </div>
           <div class="special-box">
-            <label v-on:click="toggleSkill" class="text" id="ap">
+            <label class="text" id="ap">
               Action Points
             </label>
             <input class="score" type="number" :value="ap" readonly>
           </div>
           <div class="special-box">
-            <label v-on:click="toggleSkill" class="text" id="carry">
+            <label class="text" id="carry">
               Carry Weight
             </label>
             <input class="score" type="number" :value="carry" readonly>
           </div>
-          <div class="header"></div>
-          <button class="lvlUp">
+          <div class="header hidden"></div>
+          <button class="lvlUp hidden">
             Level up
           </button>
         </div>
@@ -242,6 +241,7 @@ export default {
       unarmed: null,
       ap: null,
       equip: null,
+      carry: null,
       hp: null,
       level: 1,
       // Choosing a faction/ multiple traits
@@ -421,6 +421,7 @@ export default {
       this.updateSkills();
       this.updateTags();
       this.updateTraits();
+      this.checkLvlUpAvailable();
     },
     updateTags: function(){
       for(var i = 0; i < this.selectedSkills.length; i++){
@@ -548,6 +549,20 @@ export default {
         this.selectedSmallFrame = false;
         this.agility -= 1;
       }
+    },
+    checkLvlUpAvailable: function(){
+      if(this.remainingPoints == 0 && this.selectedSkills.length == 3){
+        let hidden = document.getElementsByClassName("hidden");
+        [].forEach.call(hidden, function (hide) {
+          hide.style.display = "block";
+        });
+      }
+      if(this.level == 1 && (this.remainingPoints != 0 || this.selectedSkills.length != 3)){
+        let hidden = document.getElementsByClassName("hidden");
+        [].forEach.call(hidden, function (hide) {
+          hide.style.display = "none";
+        });
+      }
     }
   }
 }
@@ -643,6 +658,9 @@ a {
   float: right;
   padding: 5px;
   border-radius: 8px;
+}
+.hidden{
+  display: none;
 }
 .header{
     font-size: 12px;
