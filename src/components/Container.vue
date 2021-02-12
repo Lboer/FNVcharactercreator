@@ -203,8 +203,14 @@
             </label>
             <input class="score" type="number" :value="carry" readonly>
           </div>
+          <div class="special-box hidden">
+            <label class="text" id="lvlUpPoints">
+              Points to spend
+            </label>
+            <input class="score" type="number" :value="lvlUpPoints" readonly>
+          </div>
           <div class="header hidden"></div>
-          <button class="lvlUp hidden">
+          <button class="lvlUp hidden" v-on:click="levelUp">
             Level up
           </button>
         </div>
@@ -243,6 +249,7 @@ export default {
       equip: null,
       carry: null,
       hp: null,
+      lvlUpPoints: 0,
       level: 1,
       // Choosing a faction/ multiple traits
       factions: [
@@ -563,6 +570,13 @@ export default {
           hide.style.display = "none";
         });
       }
+    },
+    levelUp: function(){
+      // WATCH OUT.
+      // THE GAME REMEMBERS 0.5, SO LVL 2 you can get 13 skill points, while at lvl 3 you can get 14 without raising your int.
+      if(this.lvlUpPoints == 0){
+        this.lvlUpPoints = 10 + Math.floor(this.intelligence/2);
+      }
     }
   }
 }
@@ -687,4 +701,3 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 </style>
-<!-- npm run serve -->
