@@ -94,7 +94,7 @@
         </div>
         <!-- Block 2: Starting perks and description -->
         <div class="special">
-          <div v-for="trait in traits" :key="trait.name">
+          <div v-for="trait in traits" :key="trait.name" class="hideOnLevelUp">
             <input type="checkbox" :value="trait.name" v-model="selectedTraits" 
             :disabled="selectedTraits.length > 1 && selectedTraits.indexOf(trait.name) === -1"  @change="updateAll()">
             <label class="text" :for="trait.name"> {{ trait.name }}</label>
@@ -576,6 +576,10 @@ export default {
       // THE GAME REMEMBERS 0.5, SO LVL 2 you can get 13 skill points, while at lvl 3 you can get 14 without raising your int.
       if(this.lvlUpPoints == 0){
         this.lvlUpPoints = 10 + Math.floor(this.intelligence/2);
+        let toHide = document.getElementsByClassName("hideOnLevelUp");
+        [].forEach.call(toHide, function (hide) {
+          hide.style.display = "none";
+        });
       }
     }
   }
@@ -691,6 +695,9 @@ a {
 .bold{
   font-weight: bold;
   font-style: italic;
+}
+.hideOnLevelUp{
+  display: block;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
