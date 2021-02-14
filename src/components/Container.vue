@@ -12,6 +12,19 @@
           </div>
           <div class="special-box">
             <label class="text">
+              Sex
+            </label>
+            <select name="sex" class="name" v-model="sex">
+              <option>
+                Female
+              </option>
+              <option>
+                Male
+              </option>
+            </select>
+          </div>
+          <div class="special-box">
+            <label class="text">
               Faction
             </label>
             <select name="factions" class="name" v-model="selectedFaction">
@@ -90,7 +103,7 @@
             <input class="score" type="number" readonly :value="remainingPoints">
           </label>
           <div class="header"></div>
-          <p class="text" v-if="selectedFaction != null">{{ selectedFaction.text }}</p>
+          <!-- <p class="text" v-if="selectedFaction != null">{{ selectedFaction.text }}</p> -->
         </div>
         <!-- Block 2: Starting perks and description -->
         <div class="special">
@@ -249,6 +262,7 @@ export default {
       equip: null,
       carry: null,
       hp: null,
+      sex: "Female",
       lvlUpPoints: 0,
       level: 1,
       // Choosing a faction/ multiple traits
@@ -284,6 +298,10 @@ export default {
       selectedFourEyes: false,
       selectedHoarder: false,
       selectedSmallFrame: false,
+      // All perks
+      perks: [
+        {name: "", reqLevel: "", requirement1: "", requirement2: ""}
+      ]
     }
   },
   methods:{
@@ -650,6 +668,7 @@ a {
 .special-box{
   line-height: 25px;
   position: relative;
+  margin-bottom: 1px;
 }
 .up{
   color: #ffb642;
