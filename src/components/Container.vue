@@ -595,9 +595,12 @@ export default {
       if(this.lvlUpPoints == 0){
         this.lvlUpPoints = 10 + Math.floor(this.intelligence/2);
         let toHide = document.getElementsByClassName("hideOnLevelUp");
-        [].forEach.call(toHide, function (hide) {
-          hide.style.display = "none";
-        });
+        if(this.level == 1){
+          [].forEach.call(toHide, function (hide) {
+            hide.style.display = "none";
+          });
+        }
+        this.level++;
       }
     }
   }
