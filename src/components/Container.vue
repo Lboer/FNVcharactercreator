@@ -46,6 +46,7 @@
               Strength
             </label>
             <div class="up" v-on:click="upStrength" id="strUp">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" max="10" min="1" :value="strength">
             <div class="down" v-on:click="downStrength" id="strDown">-</div>
           </div>
@@ -54,6 +55,7 @@
               Perception
             </label>
             <div class="up" v-on:click="upPerception">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" max="10" min="1" :value="perception">
             <div class="down" v-on:click="downPerception">-</div>
           </div>
@@ -62,6 +64,7 @@
               Endurance
             </label>
             <div class="up" v-on:click="upEndurance">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" max="10" min="1" :value="endurance">
             <div class="down" v-on:click="downEndurance">-</div>
           </div>
@@ -70,6 +73,7 @@
               Charisma
             </label>
             <div class="up" v-on:click="upCharisma">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" max="10" min="1" :value="charisma">
             <div class="down" v-on:click="downCharisma">-</div>
           </div>
@@ -78,6 +82,7 @@
               Intelligence
             </label>
             <div class="up" v-on:click="upIntelligence">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" max="10" min="1" :value="intelligence">
             <div class="down" v-on:click="downIntelligence">-</div>
           </div>
@@ -86,6 +91,7 @@
               Agility
             </label>
             <div class="up" v-on:click="upAgility">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" max="10" min="1" :value="agility">
             <div class="down" v-on:click="downAgility">-</div>
           </div>
@@ -94,6 +100,7 @@
               Luck
             </label>
             <div class="up" v-on:click="upLuck">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" max="10" min="1" :value="luck">
             <div class="down" v-on:click="downLuck">-</div>
           </div>
@@ -601,6 +608,18 @@ export default {
           });
         }
         this.level++;
+        let up = document.getElementsByClassName("up");
+        [].forEach.call(up, function (hideUp) {
+          hideUp.style.display = "none";
+        });
+        let barrier = document.getElementsByClassName("hiddenBarrier");
+        [].forEach.call(barrier, function (showBarrier) {
+          showBarrier.style.display = "block";
+        });
+        let down = document.getElementsByClassName("down");
+        [].forEach.call(down, function (hideDown) {
+          hideDown.style.display = "none";
+        });
       }
     }
   }
@@ -713,6 +732,12 @@ a {
   width: 21.5px;
   height: 2px;
   float: right;
+}
+.hiddenBarrier{
+  width: 21.5px;
+  height: 2px;
+  float: right;
+  display: none;
 }
 .bold{
   font-weight: bold;
