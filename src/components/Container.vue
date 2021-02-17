@@ -129,79 +129,118 @@
             <label v-on:click="toggleSkill" class="text" id="barter">
               Barter
             </label>
+            <div class="up" v-on:click="upBarter">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="barter" readonly>
+            <div class="down" v-on:click="downBarter">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="energy">
               Energy Weapons
             </label>
+            <div class="up" v-on:click="upEnergy">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="energy" readonly>
+            <div class="down" v-on:click="downEnergy">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="explosives">
               Explosives
             </label>
+            <div class="up" v-on:click="upExplosives">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="explosives" readonly>
+            <div class="down" v-on:click="downExplosives">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="guns">
               Guns
             </label>
+            <div class="up" v-on:click="upGuns">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="guns" readonly>
+            <div class="down" v-on:click="downGuns">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="lockpick">
               Lockpick
             </label>
+            <div class="up" v-on:click="upLockpick">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="lockpick" readonly>
+            <div class="down" v-on:click="downLockpick">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="medicine">
               Medicine
             </label>
+            <div class="up" v-on:click="upMedicine">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="medicine" readonly>
+            <div class="down" v-on:click="downMedicine">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="melee">
               Melee Weapons
             </label>
+            <div class="up" v-on:click="upMelee">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="melee" readonly>
+            <div class="down" v-on:click="downMelee">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="repair">
               Repair
             </label>
+            <div class="up" v-on:click="upRepair">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="repair" readonly>
+            <div class="down" v-on:click="downRepair">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="science">
               Science
             </label>
+            <div class="up" v-on:click="upScience">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="science" readonly>
+            <div class="down" v-on:click="downScience">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="sneak">
               Sneak
             </label>
+            <div class="up" v-on:click="upSneak">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="sneak" readonly>
+            <div class="down" v-on:click="downSneak">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="speech">
               Speech
             </label>
+            <div class="up" v-on:click="upSpeech">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="speech" readonly>
+            <div class="down" v-on:click="downSpeech">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="survival">
               Survival
             </label>
+            <div class="up" v-on:click="upSurvival">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="survival" readonly>
+            <div class="down" v-on:click="downSurvival">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="unarmed">
               Unarmed
             </label>
+            <div class="up" v-on:click="upUnarmed">+</div>
+            <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="unarmed" readonly>
+            <div class="down" v-on:click="downUnarmed">-</div>
           </div>
           <div class="header"></div>
           <!-- Place Action Points, Equipment Weight & Damage percentage based upon chosen weapon -->
