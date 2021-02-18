@@ -129,118 +129,118 @@
             <label v-on:click="toggleSkill" class="text" id="barter">
               Barter
             </label>
-            <div class="up" v-on:click="upBarter">+</div>
+            <div class="up skillChange" v-on:click="upBarter">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="barter" readonly>
-            <div class="down" v-on:click="downBarter">-</div>
+            <div class="down skillChange" v-on:click="downBarter">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="energy">
               Energy Weapons
             </label>
-            <div class="up" v-on:click="upEnergy">+</div>
+            <div class="up skillChange" v-on:click="upEnergy">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="energy" readonly>
-            <div class="down" v-on:click="downEnergy">-</div>
+            <div class="down skillChange" v-on:click="downEnergy">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="explosives">
               Explosives
             </label>
-            <div class="up" v-on:click="upExplosives">+</div>
+            <div class="up skillChange" v-on:click="upExplosives">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="explosives" readonly>
-            <div class="down" v-on:click="downExplosives">-</div>
+            <div class="down skillChange" v-on:click="downExplosives">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="guns">
               Guns
             </label>
-            <div class="up" v-on:click="upGuns">+</div>
+            <div class="up skillChange" v-on:click="upGuns">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="guns" readonly>
-            <div class="down" v-on:click="downGuns">-</div>
+            <div class="down skillChange" v-on:click="downGuns">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="lockpick">
               Lockpick
             </label>
-            <div class="up" v-on:click="upLockpick">+</div>
+            <div class="up skillChange" v-on:click="upLockpick">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="lockpick" readonly>
-            <div class="down" v-on:click="downLockpick">-</div>
+            <div class="down skillChange" v-on:click="downLockpick">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="medicine">
               Medicine
             </label>
-            <div class="up" v-on:click="upMedicine">+</div>
+            <div class="up skillChange" v-on:click="upMedicine">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="medicine" readonly>
-            <div class="down" v-on:click="downMedicine">-</div>
+            <div class="down skillChange" v-on:click="downMedicine">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="melee">
               Melee Weapons
             </label>
-            <div class="up" v-on:click="upMelee">+</div>
+            <div class="up skillChange" v-on:click="upMelee">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="melee" readonly>
-            <div class="down" v-on:click="downMelee">-</div>
+            <div class="down skillChange" v-on:click="downMelee">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="repair">
               Repair
             </label>
-            <div class="up" v-on:click="upRepair">+</div>
+            <div class="up skillChange" v-on:click="upRepair">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="repair" readonly>
-            <div class="down" v-on:click="downRepair">-</div>
+            <div class="down skillChange" v-on:click="downRepair">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="science">
               Science
             </label>
-            <div class="up" v-on:click="upScience">+</div>
+            <div class="up skillChange" v-on:click="upScience">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="science" readonly>
-            <div class="down" v-on:click="downScience">-</div>
+            <div class="down skillChange" v-on:click="downScience">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="sneak">
               Sneak
             </label>
-            <div class="up" v-on:click="upSneak">+</div>
+            <div class="up skillChange" v-on:click="upSneak">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="sneak" readonly>
-            <div class="down" v-on:click="downSneak">-</div>
+            <div class="down skillChange" v-on:click="downSneak">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="speech">
               Speech
             </label>
-            <div class="up" v-on:click="upSpeech">+</div>
+            <div class="up skillChange" v-on:click="upSpeech">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="speech" readonly>
-            <div class="down" v-on:click="downSpeech">-</div>
+            <div class="down skillChange" v-on:click="downSpeech">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="survival">
               Survival
             </label>
-            <div class="up" v-on:click="upSurvival">+</div>
+            <div class="up skillChange" v-on:click="upSurvival">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="survival" readonly>
-            <div class="down" v-on:click="downSurvival">-</div>
+            <div class="down skillChange" v-on:click="downSurvival">-</div>
           </div>
           <div class="special-box">
             <label v-on:click="toggleSkill" class="text" id="unarmed">
               Unarmed
             </label>
-            <div class="up" v-on:click="upUnarmed">+</div>
+            <div class="up skillChange" v-on:click="upUnarmed">+</div>
             <div class="hiddenBarrier"></div>
             <input class="score" type="number" :value="unarmed" readonly>
-            <div class="down" v-on:click="downUnarmed">-</div>
+            <div class="down skillChange" v-on:click="downUnarmed">-</div>
           </div>
           <div class="header"></div>
           <!-- Place Action Points, Equipment Weight & Damage percentage based upon chosen weapon -->
@@ -488,6 +488,189 @@ export default {
         this.updateAll();
       }
     },
+    // leveling up skills
+    upBarter: function() {
+      if(this.barter < 100 && this.lvlUpPoints > 0){
+        this.barter++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downBarter: function() {
+      if(this.barter > 1 && this.lvlUpPoints > 0){
+        this.barter--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
+    upEnergy: function() {
+      if(this.energy < 100 && this.lvlUpPoints > 0){
+        this.energy++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downEnergy: function() {
+      if(this.energy > 1 && this.lvlUpPoints > 0){
+        this.energy--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
+    upExplosives: function() {
+      if(this.explosives < 100 && this.lvlUpPoints > 0){
+        this.explosives++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downExplosives: function() {
+      if(this.explosives > 1 && this.lvlUpPoints > 0){
+        this.explosives--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
+    upGuns: function() {
+      if(this.guns < 100 && this.lvlUpPoints > 0){
+        this.guns++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downGuns: function() {
+      if(this.guns > 1 && this.lvlUpPoints > 0){
+        this.guns--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
+    upLockpick: function() {
+      if(this.lockpick < 100 && this.lvlUpPoints > 0){
+        this.lockpick++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downLockpick: function() {
+      if(this.lockpick > 1 && this.lvlUpPoints > 0){
+        this.lockpick--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
+    upMedicine: function() {
+      if(this.medicine < 100 && this.lvlUpPoints > 0){
+        this.medicine++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downMedicine: function() {
+      if(this.medicine > 1 && this.lvlUpPoints > 0){
+        this.medicine--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
+    upMelee: function() {
+      if(this.melee < 100 && this.lvlUpPoints > 0){
+        this.melee++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downMelee: function() {
+      if(this.melee > 1 && this.lvlUpPoints > 0){
+        this.melee--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
+    upRepair: function() {
+      if(this.repair < 100 && this.lvlUpPoints > 0){
+        this.repair++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downRepair: function() {
+      if(this.repair > 1 && this.lvlUpPoints > 0){
+        this.repair--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
+    upScience: function() {
+      if(this.science < 100 && this.lvlUpPoints > 0){
+        this.science++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downScience: function() {
+      if(this.science > 1 && this.lvlUpPoints > 0){
+        this.science--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
+    upSneak: function() {
+      if(this.sneak < 100 && this.lvlUpPoints > 0){
+        this.sneak++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downSneak: function() {
+      if(this.sneak > 1 && this.lvlUpPoints > 0){
+        this.sneak--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
+    upSpeech: function() {
+      if(this.speech < 100 && this.lvlUpPoints > 0){
+        this.speech++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downSpeech: function() {
+      if(this.speech > 1 && this.lvlUpPoints > 0){
+        this.speech--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
+    upSurvival: function() {
+      if(this.survival < 100 && this.lvlUpPoints > 0){
+        this.survival++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downSurvival: function() {
+      if(this.survival > 1 && this.lvlUpPoints > 0){
+        this.survival--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
+    upUnarmed: function() {
+      if(this.unarmed < 100 && this.lvlUpPoints > 0){
+        this.unarmed++;
+        this.lvlUpPoints--;
+      }
+      this.updateAll()
+    },
+    downUnarmed: function() {
+      if(this.unarmed > 1 && this.lvlUpPoints > 0){
+        this.unarmed--;
+        this.lvlUpPoints++;
+      }
+      this.updateAll()
+    },
     updateAll: function(){
       this.updateSkills();
       this.updateTags();
@@ -659,6 +842,10 @@ export default {
         [].forEach.call(down, function (hideDown) {
           hideDown.style.display = "none";
         });
+        let toggleSkills = document.getElementsByClassName("skillChange");
+        [].forEach.call(toggleSkills, function (show) {
+          show.style.display = "block";
+        });
       }
     }
   }
@@ -756,6 +943,9 @@ a {
   float: right;
   padding: 5px;
   border-radius: 8px;
+}
+.skillChange{
+  display: none;
 }
 .hidden{
   display: none;
